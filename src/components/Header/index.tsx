@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/images/logo.svg';
 import styles from './styles.module.sass';
-import ActiveLink from '../ActiveLink';
+import { ActiveLink } from '../ActiveLink';
 
 export default function index() {
   return (
@@ -14,15 +14,15 @@ export default function index() {
         </Link>
         <nav>
           <ActiveLink href="/" activeClassName={styles.active}>
-            <span>Home</span>
+            <a>Home</a>
           </ActiveLink>
 
           <ActiveLink href="/posts" activeClassName={styles.active}>
-            <span>Posts</span>
+            <a>Posts</a>
           </ActiveLink>
 
           <ActiveLink href="/sobre" activeClassName={styles.active}>
-            <span>Sobre nós</span>
+            <a>Sobre nós</a>
           </ActiveLink>
         </nav>
         <a href="#" type="button" className={styles.readyButton}>
