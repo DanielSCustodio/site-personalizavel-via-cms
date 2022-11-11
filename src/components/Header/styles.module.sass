@@ -21,20 +21,22 @@
   nav
     a
       font-weight: 700
+      color: $color-primary
 
       &+a
-        margin-left: 1rem
+        margin-left: 3rem
         transition: 0.8s
 
       &:hover
-        text-decoration: overline $color-primary 3px
-        color: $color-primary
+        text-decoration: overline $text-secondary 3px
+        color: $text-secondary
 
       &.active
-        color: $color-primary
+        color: $text-secondary
 
 .readyButton
   background-color: $color-primary
+  color: $text-secondary
   font-weight: 900
   padding: 0.5rem 3rem
   border-radius: 40px
@@ -42,7 +44,7 @@
   transition: 0.8s
 
   &:hover
-    background-color: $text-primary
+    background-color: $text-secondary
     color: $color-primary
 
 @media(max-width: 720px)
