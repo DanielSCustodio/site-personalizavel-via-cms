@@ -5,7 +5,7 @@ import logo from '../../../public/images/logo.svg';
 import styles from './styles.module.sass';
 import { ActiveLink } from '../ActiveLink';
 
-export default function index() {
+export default function Header() {
   return (
     <header className={styles.container}>
       <div className={styles.content}>
