@@ -2,34 +2,48 @@
 
 .container
   display: flex
-  width: 80vw
+  width: 85vw
   margin: 0 auto
-  height: 100vh
-  margin-top: 5rem
-  justify-content: center
+  padding-top: 15%
+  justify-content: space-evenly
+  height: auto
+  align-items: stretch
 
-  @media(max-width: 720px)
+  @media(max-width: 912px)
+    padding-top: 25%
     flex-direction: column-reverse
     width: 90vw
-    height: auto
-    margin-top: 2rem
-
-.banner
-  img
-    width: 773px
-    object-fit: contain
 
   @media(max-width: 720px)
-    display:  flex
-    justify-content:  center
-    img
-      width: 70%
+    padding-top: 35%
+    flex-direction: column-reverse
+    width: 90vw
+
+.banner
+  max-width: 40%
+  img
+    width: 100%
+    object-fit: contain
+
+  @media(max-width: 912px)
+    display: flex
+    justify-content: center
+    min-width: 100%
+
+  @media(max-width: 720px)
+    display: flex
+    justify-content: center
+    min-width: 100%
 
 .callAction
-  margin-right: 5rem
+  max-width: 60%
+
+  @media(max-width: 912px)
+    min-width: 100%
 
   @media(max-width: 720px)
     margin-right: 0
+    min-width: 100%
 
   h2
     font-size: 4rem
@@ -37,15 +51,18 @@
 
     span
       color: $color-secondary
-
+      font-weight: 300
+  @media(max-width: 912px)
+    h2
+      font-size: 4rem
+      line-height: 4rem
   @media(max-width: 720px)
     h2
       font-size: 2.2rem
       line-height: 2.7rem
 
-
   button
-    padding: 1.5rem 2rem
+    padding: 1rem 2rem
     border: 0
     background-color: $text-primary
     color: $text-secondary
@@ -53,35 +70,35 @@
     font-weight: bold
     font-size: 1.2rem
     text-transform: uppercase
-    margin-bottom: 5rem
+    margin-bottom: 3rem
     transition: 0.8s
 
     &:hover
       background-color: $color-secondary
 
     @media(max-width: 720px)
-      margin-bottom: 1rem
+      margin-bottom: 3rem
       padding: 1rem 1.5rem
 
   .text
-    font-size: 1.3rem
+    font-size: 1rem
     margin: 2rem 0
 
   .numbers
-    display:  flex
+    display: flex
     border-top: 1px solid #0000001c
-    padding-top: 5rem 
+    padding-top: 3rem
 
     @media(max-width: 720px)
-      padding-top: 1rem
+      padding-top: 3rem
 
     div
       h3
-        font-size:3rem
+        font-size: 3rem
         line-height: 3rem
 
       &+div
         margin-left: 5rem
 
         @media(max-width: 720px)
-        margin-left: 2rem
+          margin-left: 2rem
