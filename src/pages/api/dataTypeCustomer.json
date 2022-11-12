@@ -1,0 +1,23 @@
+[
+  {
+    "id":1,
+    "title":"Para Iniciantes",
+    "callAction": "Lance seu primeiro site",
+    "image":"https://imgur.com/riG7s7U.png",
+    "labels":["Construtor Visual", "Documentação", "Suporte", "Sites Pré-construídos"]
+  },
+  {
+    "id":2,
+    "title":"Para Empresas",
+    "callAction": "Gere leads e conversões",
+    "image":"https://imgur.com/bSoYqvC.png",
+    "labels":["Design", "SEO", "Construtor de lojas", "Construtor de formulários"]
+  },
+  {
+    "id":3,
+    "title":"Para profissionais",
+    "callAction": "Leve seus projetos para o próximo nível",
+    "image":"https://imgur.com/XCSRvmQ.png",
+    "labels":["All-In-One", "Patcher", "WCAG", "Dados Dinâmico"]
+  }
+]
