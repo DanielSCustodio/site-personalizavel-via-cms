@@ -3,9 +3,11 @@ import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Main from '../templates/Main';
 import { getData } from './api/typeCustomer';
+import { getFeature } from './api/features';
 import CustomerTypeCard from '../templates/CustomerTypeCard';
+import Features from '../templates/Features';
 
-export default function Home({ info }) {
+export default function Home({ info, featureData }) {
   return (
     <>
       <Head>
@@ -13,12 +15,14 @@ export default function Home({ info }) {
       </Head>
       <Main />
       <CustomerTypeCard info={info} />
+      <Features featureData={featureData} />
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = getData();
+  const features = getFeature();
 
   const info = data.map((item) => {
     return {
@@ -30,7 +34,14 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
+  const featureData = features.map((item) => {
+    return {
+      id: item.id,
+      image: item.image,
+    };
+  });
+
   return {
-    props: { info },
+    props: { info, featureData },
   };
 };
