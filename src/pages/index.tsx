@@ -6,6 +6,7 @@ import { getData } from './api/typeCustomer';
 import { getFeature } from './api/features';
 import CustomerTypeCard from '../templates/CustomerTypeCard';
 import Features from '../templates/Features';
+import AllInOneCard from '../templates/AllInOneCard';
 
 export default function Home({ info, featureData }) {
   return (
@@ -13,9 +14,12 @@ export default function Home({ info, featureData }) {
       <Head>
         <title>Home - Construtor de sites</title>
       </Head>
-      <Main />
-      <CustomerTypeCard info={info} />
-      <Features featureData={featureData} />
+      <main>
+        <Main />
+        <CustomerTypeCard info={info} />
+        <Features featureData={featureData} />
+        <AllInOneCard />
+      </main>
     </>
   );
 }
