@@ -20,7 +20,7 @@ interface DataProps {
 export default function Features({ featureData }: DataProps) {
   const [feature, setFeature] = React.useState('cv');
   return (
-    <main className={styles.container}>
+    <section className={styles.container}>
       <img src="images/logo.svg" alt="" />
       <h2>Projete qualquer coisa, construa tudo</h2>
       <h3>
@@ -59,6 +59,6 @@ export default function Features({ featureData }: DataProps) {
               ))}
         </section>
       </section>
-    </main>
+    </section>
   );
 }

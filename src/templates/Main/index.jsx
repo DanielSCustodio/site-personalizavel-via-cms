@@ -3,7 +3,7 @@ import styles from './styles.module.sass';
 
 export default function Main() {
   return (
-    <main className={styles.container}>
+    <section className={styles.container}>
       <section className={styles.callAction}>
         <h2>
           O Melhor<span>&</span>
@@ -31,6 +31,6 @@ export default function Main() {
       <section className={styles.banner}>
         <img src="/images/banner.png" alt="" />
       </section>
-    </main>
+    </section>
   );
 }

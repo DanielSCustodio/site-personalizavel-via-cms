@@ -23,7 +23,7 @@ export default function CustomerTypeCard({ info }: DataProps) {
           <img src={item.image} alt={item.title} />
           <div key={item.id} className={styles.labels}>
             {item.labels.map((label) => (
-              <p key={label}>{label}</p>
+              <span key={label}>{label}</span>
             ))}
           </div>
         </div>
