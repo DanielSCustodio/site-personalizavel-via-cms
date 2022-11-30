@@ -2,9 +2,16 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+  FiChevronLeft,
+  FiChevronsLeft,
+  FiChevronRight,
+  FiChevronsRight,
+} from 'react-icons/fi';
 import banner from '../../../public/images/blog.jpg';
 
 import styles from './styles.module.sass';
+import { icons } from 'react-icons';
 
 export default function Blog() {
   return (
@@ -66,6 +73,24 @@ export default function Blog() {
               </p>
             </Link>
           </section>
+        </section>
+        <section className={styles.buttonsNavigation}>
+          <div>
+            <button>
+              <FiChevronsLeft size={25} />
+            </button>
+            <button>
+              <FiChevronLeft size={25} />
+            </button>
+          </div>
+          <div>
+            <button>
+              <FiChevronRight size={25} />
+            </button>
+            <button>
+              <FiChevronsRight size={25} />
+            </button>
+          </div>
         </section>
       </main>
     </>
