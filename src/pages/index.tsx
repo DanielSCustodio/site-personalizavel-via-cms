@@ -1,5 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
+import { getPrismicClient } from '../service/prismic';
+import Prismic from '@prismicio/client';
+import { RichText } from 'prismic-dom';
 import { GetStaticProps } from 'next';
 import { getData } from './api/typeCustomer';
 import { getFeature } from './api/features';
@@ -27,6 +30,10 @@ export default function Home({ info, featureData }) {
 export const getStaticProps: GetStaticProps = async () => {
   const data = getData();
   const features = getFeature();
+  const prismic = getPrismicClient();
+  const response = await prismic.query([
+    Prismic.Predicates.at('document.type', 'pagina_home'),
+  ]);
 
   const info = data.map((item) => {
     return {
