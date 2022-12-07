@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.sass';
 
-export default function Main() {
+export default function Banner() {
   return (
     <section className={styles.container}>
       <section className={styles.callAction}>

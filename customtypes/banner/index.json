@@ -1,0 +1,9 @@
+{
+  "id": "banner",
+  "label": "Banner",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {}
+  }
+}
