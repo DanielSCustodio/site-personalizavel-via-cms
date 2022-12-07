@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
-import Main from '../templates/Main';
 import { getData } from './api/typeCustomer';
 import { getFeature } from './api/features';
+import Banner from '../templates/Banner';
 import CustomerTypeCard from '../templates/CustomerTypeCard';
 import Features from '../templates/Features';
 import AllInOneCard from '../templates/AllInOneCard';
@@ -15,7 +15,7 @@ export default function Home({ info, featureData }) {
         <title>Home - Construtor de sites</title>
       </Head>
       <main>
-        <Main />
+        <Banner />
         <CustomerTypeCard info={info} />
         <Features featureData={featureData} />
         <AllInOneCard />

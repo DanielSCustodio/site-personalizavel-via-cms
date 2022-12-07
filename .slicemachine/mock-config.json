@@ -1,0 +1,13 @@
+{
+  "_cts": {
+    "home": {
+      "title_banner": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
+    "banner": {}
+  }
+}
