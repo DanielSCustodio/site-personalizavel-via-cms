@@ -40,8 +40,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const contentPrismic = {
     title: RichText.asText(titulo_da_pagina_inicial),
   };
+  const home = await prismic.query([
+    Prismic.Predicates.at('document.type', 'home'),
+  ]);
 
-  console.log(contentPrismic);
+  console.log(home.results[0].data);
 
   const info = data.map((item) => {
     return {
