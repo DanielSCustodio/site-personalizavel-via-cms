@@ -11,11 +11,11 @@ import CustomerTypeCard from '../templates/CustomerTypeCard';
 import Features from '../templates/Features';
 import AllInOneCard from '../templates/AllInOneCard';
 
-export default function Home({ info, featureData }) {
+export default function Home({ info, featureData, contentPrismic }) {
   return (
     <>
       <Head>
-        <title>Home - Construtor de sites</title>
+        <title>{contentPrismic.title} - Construtor de sites</title>
       </Head>
       <main>
         <Banner />
@@ -35,6 +35,14 @@ export const getStaticProps: GetStaticProps = async () => {
     Prismic.Predicates.at('document.type', 'pagina_home'),
   ]);
 
+  const { titulo_da_pagina_inicial } = response.results[0].data;
+
+  const contentPrismic = {
+    title: RichText.asText(titulo_da_pagina_inicial),
+  };
+
+  console.log(contentPrismic);
+
   const info = data.map((item) => {
     return {
       id: item.id,
@@ -53,6 +61,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   return {
-    props: { info, featureData },
+    props: { info, featureData, contentPrismic },
+    revalidate: 60, //consulta na API a cada 60 segundos
   };
 };
