@@ -12,13 +12,76 @@
           "placeholder": ""
         }
       },
-      "title_banner": {
+      "titulo_do_banner": {
         "type": "StructuredText",
         "config": {
-          "label": "title-banner",
+          "label": "titulo_do_banner",
           "placeholder": "",
           "allowTargetBlank": true,
-          "single": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          "single": "heading2"
+        }
+      },
+      "subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "subtitulo",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "button": {
+        "type": "Text",
+        "config": {
+          "label": "texto_do_botao",
+          "placeholder": ""
+        }
+      },
+      "numero_do_caso1": {
+        "type": "StructuredText",
+        "config": {
+          "label": "numero_do_caso1",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading3"
+        }
+      },
+      "texto_do_caso1": {
+        "type": "StructuredText",
+        "config": {
+          "label": "texto_do_caso1",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "numero_do_caso2": {
+        "type": "StructuredText",
+        "config": {
+          "label": "numero_do_caso2",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading3"
+        }
+      },
+      "texto_do_caso2": {
+        "type": "StructuredText",
+        "config": {
+          "label": "texto_do_caso2",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "imagem_do_banner": {
+        "type": "Image",
+        "config": {
+          "label": "imagem_do_banner",
+          "constraint": {
+            "width": 775,
+            "height": 775
+          },
+          "thumbnails": []
         }
       }
     }

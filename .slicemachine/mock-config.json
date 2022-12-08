@@ -1,9 +1,39 @@
 {
   "_cts": {
     "home": {
-      "title_banner": {
+      "subtitle": {
         "config": {
           "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "numero_do_caso1": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      },
+      "texto_do_caso1": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "numero_do_caso2": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      },
+      "texto_do_caso2": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "titulo_do_banner": {
+        "config": {
+          "patternType": "HEADING",
           "blocks": 1
         }
       }
