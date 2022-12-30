@@ -36,23 +36,23 @@ interface HomeDocumentData {
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: home.subtitle
+     * - **API ID Path**: home.subtitulo
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    subtitle: prismicT.RichTextField;
+    subtitulo: prismicT.RichTextField;
     /**
      * texto_do_botao field in *Home*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: home.button
+     * - **API ID Path**: home.texto_do_botao
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    button: prismicT.KeyTextField;
+    texto_do_botao: prismicT.KeyTextField;
     /**
      * numero_do_caso1 field in *Home*
      *

@@ -11,14 +11,19 @@ import CustomerTypeCard from '../templates/CustomerTypeCard';
 import Features from '../templates/Features';
 import AllInOneCard from '../templates/AllInOneCard';
 
-export default function Home({ info, featureData, contentPrismic }) {
+export default function Home({
+  info,
+  featureData,
+  contentTitle,
+  contentBanner,
+}) {
   return (
     <>
       <Head>
-        <title>{contentPrismic.title} - Construtor de sites</title>
+        <title>{contentTitle.title} - Construtor de sites</title>
       </Head>
       <main>
-        <Banner />
+        <Banner contentBanner={contentBanner} />
         <CustomerTypeCard info={info} />
         <Features featureData={featureData} />
         <AllInOneCard />
@@ -31,20 +36,43 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = getData();
   const features = getFeature();
   const prismic = getPrismicClient();
-  const response = await prismic.query([
+
+  //--------------------
+  const title = await prismic.query([
     Prismic.Predicates.at('document.type', 'pagina_home'),
   ]);
-
-  const { titulo_da_pagina_inicial } = response.results[0].data;
-
-  const contentPrismic = {
+  const { titulo_da_pagina_inicial } = title.results[0].data;
+  const contentTitle = {
     title: RichText.asText(titulo_da_pagina_inicial),
   };
-  const home = await prismic.query([
+  //--------------------
+  const banner = await prismic.query([
     Prismic.Predicates.at('document.type', 'home'),
   ]);
+  const {
+    titulo_do_banner,
+    subtitle,
+    button,
+    numero_do_caso1,
+    texto_do_caso1,
+    numero_do_caso2,
+    texto_do_caso2,
+    imagem_do_banner,
+  } = banner.results[0].data;
 
-  console.log(home.results[0].data);
+  const contentBanner = {
+    title: RichText.asText(titulo_do_banner),
+    subtitle: RichText.asText(subtitle),
+    buttonText: button,
+    caseOneNumber: RichText.asText(numero_do_caso1),
+    caseOneText: RichText.asText(texto_do_caso1),
+    caseTwoNumber: RichText.asText(numero_do_caso2),
+    caseTwoText: RichText.asText(texto_do_caso2),
+    image: imagem_do_banner.url,
+  };
+  console.log('--<', contentBanner);
+
+  //--------------------
 
   const info = data.map((item) => {
     return {
@@ -64,7 +92,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   return {
-    props: { info, featureData, contentPrismic },
+    props: { info, featureData, contentTitle, contentBanner },
     revalidate: 60, //consulta na API a cada 60 segundos
   };
 };

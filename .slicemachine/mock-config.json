@@ -1,12 +1,6 @@
 {
   "_cts": {
     "home": {
-      "subtitle": {
-        "config": {
-          "patternType": "PARAGRAPH",
-          "blocks": 1
-        }
-      },
       "numero_do_caso1": {
         "config": {
           "patternType": "HEADING",
@@ -34,6 +28,12 @@
       "titulo_do_banner": {
         "config": {
           "patternType": "HEADING",
+          "blocks": 1
+        }
+      },
+      "subtitulo": {
+        "config": {
+          "patternType": "PARAGRAPH",
           "blocks": 1
         }
       }
