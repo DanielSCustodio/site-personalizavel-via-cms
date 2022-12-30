@@ -30,6 +30,14 @@
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
+      "link_do_botao": {
+        "type": "Link",
+        "config": {
+          "label": "link_do_botao",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "texto_do_botao": {
         "type": "Text",
         "config": {

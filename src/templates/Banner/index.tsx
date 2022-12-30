@@ -6,6 +6,7 @@ type TypeBanner = {
   title: string;
   subtitle: string;
   buttonText: string;
+  buttonLink: string;
   caseOneNumber: string;
   caseOneText: string;
   caseTwoNumber: string;
@@ -18,31 +19,27 @@ interface ContentBanner {
 }
 
 export default function Banner({ contentBanner }: ContentBanner) {
-  console.log(contentBanner);
-
   return (
     <section className={styles.container}>
       <section className={styles.callAction}>
-        <h2>O Melhor e mais Criativo</h2>
-        <h2>Construtor de Sites</h2>
-        <p className={styles.text}>
-          Aumente a credibilidade da sua marca. Saia na frente dos seus
-          concorrentes, construa seu site agora!
-        </p>
-        <button>Começar a construir &nbsp;&nbsp;➜</button>
+        <h2>{contentBanner.title}</h2>
+        <p className={styles.text}>{contentBanner.subtitle}</p>
+        <a href={contentBanner.buttonLink}>
+          <button>{contentBanner.buttonText} &nbsp;&nbsp;➜</button>
+        </a>
         <section className={styles.numbers}>
           <div>
-            <h3>+30</h3>
-            <p>Clientes satisfeitos</p>
+            <h3>{contentBanner.caseOneNumber}</h3>
+            <p>{contentBanner.caseOneText}</p>
           </div>
           <div>
-            <h3>+70</h3>
-            <p>Cases de sucesso</p>
+            <h3>{contentBanner.caseTwoNumber}</h3>
+            <p>{contentBanner.caseTwoText}</p>
           </div>
         </section>
       </section>
       <section className={styles.banner}>
-        <img src="/images/banner.png" alt="" />
+        <img src={contentBanner.image} alt="" />
       </section>
     </section>
   );
