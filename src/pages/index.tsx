@@ -51,8 +51,9 @@ export const getStaticProps: GetStaticProps = async () => {
   ]);
   const {
     titulo_do_banner,
-    subtitle,
-    button,
+    subtitulo,
+    texto_do_botao,
+    link_do_botao,
     numero_do_caso1,
     texto_do_caso1,
     numero_do_caso2,
@@ -60,17 +61,19 @@ export const getStaticProps: GetStaticProps = async () => {
     imagem_do_banner,
   } = banner.results[0].data;
 
+  console.log(banner.results[0].data);
+
   const contentBanner = {
     title: RichText.asText(titulo_do_banner),
-    subtitle: RichText.asText(subtitle),
-    buttonText: button,
+    subtitle: RichText.asText(subtitulo),
+    buttonText: texto_do_botao,
+    buttonLink: link_do_botao.url,
     caseOneNumber: RichText.asText(numero_do_caso1),
     caseOneText: RichText.asText(texto_do_caso1),
     caseTwoNumber: RichText.asText(numero_do_caso2),
     caseTwoText: RichText.asText(texto_do_caso2),
     image: imagem_do_banner.url,
   };
-  console.log('--<', contentBanner);
 
   //--------------------
 

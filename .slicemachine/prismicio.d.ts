@@ -43,6 +43,17 @@ interface HomeDocumentData {
      */
     subtitulo: prismicT.RichTextField;
     /**
+     * link_do_botao field in *Home*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home.link_do_botao
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link_do_botao: prismicT.LinkField;
+    /**
      * texto_do_botao field in *Home*
      *
      * - **Field Type**: Text
