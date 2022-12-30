@@ -21,7 +21,7 @@
           "single": "heading2"
         }
       },
-      "subtitle": {
+      "subtitulo": {
         "type": "StructuredText",
         "config": {
           "label": "subtitulo",
@@ -30,7 +30,7 @@
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "button": {
+      "texto_do_botao": {
         "type": "Text",
         "config": {
           "label": "texto_do_botao",

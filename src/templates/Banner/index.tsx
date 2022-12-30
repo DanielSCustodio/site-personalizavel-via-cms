@@ -1,12 +1,25 @@
 import React from 'react';
-import Prismic from '@prismicio/client';
-import { RichText } from 'prismic-dom';
-import { getPrismicClient } from '../../service/prismic';
-import { GetStaticProps } from 'next';
 
 import styles from './styles.module.sass';
 
-export default function Banner() {
+type TypeBanner = {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  caseOneNumber: string;
+  caseOneText: string;
+  caseTwoNumber: string;
+  caseTwoText: string;
+  image: string;
+};
+
+interface ContentBanner {
+  contentBanner: TypeBanner;
+}
+
+export default function Banner({ contentBanner }: ContentBanner) {
+  console.log(contentBanner);
+
   return (
     <section className={styles.container}>
       <section className={styles.callAction}>
