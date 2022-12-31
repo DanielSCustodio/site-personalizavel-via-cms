@@ -1,0 +1,38 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "post",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "titulo_do_post": [
+      {
+        "type": "paragraph",
+        "text": "Enim nulla veniam commodo do quis Lorem ipsum officia laborum. Consectetur aute ea cillum sunt nisi sint consequat officia incididunt sunt id.",
+        "spans": []
+      }
+    ],
+    "conteudo_do_post": [
+      {
+        "type": "heading1",
+        "text": "Cause",
+        "spans": []
+      }
+    ],
+    "imagem_do_post": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+    }
+  }
+}

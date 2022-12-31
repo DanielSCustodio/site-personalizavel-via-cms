@@ -130,12 +130,58 @@ interface HomeDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<HomeDocumentData>, "home", Lang>;
-export type AllDocumentTypes = BannerDocument | HomeDocument;
+/** Content for post documents */
+interface PostDocumentData {
+    /**
+     * titulo_do_post field in *post*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Título do post
+     * - **API ID Path**: post.titulo_do_post
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    titulo_do_post: prismicT.RichTextField;
+    /**
+     * conteudo_do_post field in *post*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Conteúdo do post
+     * - **API ID Path**: post.conteudo_do_post
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    conteudo_do_post: prismicT.RichTextField;
+    /**
+     * imagem_do_post field in *post*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.imagem_do_post
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    imagem_do_post: prismicT.ImageField<never>;
+}
+/**
+ * post document from Prismic
+ *
+ * - **API ID**: `post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
+export type AllDocumentTypes = BannerDocument | HomeDocument | PostDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { BannerDocumentData, BannerDocument, HomeDocumentData, HomeDocument, AllDocumentTypes };
+        export type { BannerDocumentData, BannerDocument, HomeDocumentData, HomeDocument, PostDocumentData, PostDocument, AllDocumentTypes };
     }
 }
