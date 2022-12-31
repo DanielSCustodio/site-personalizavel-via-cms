@@ -38,6 +38,20 @@
         }
       }
     },
-    "banner": {}
+    "banner": {},
+    "post": {
+      "titulo_do_post": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "conteudo_do_post": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      }
+    }
   }
 }
