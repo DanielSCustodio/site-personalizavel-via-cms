@@ -22,7 +22,7 @@ export default function Banner({ contentBanner }: ContentBanner) {
   return (
     <section className={styles.container}>
       <section className={styles.callAction}>
-        <h2>{contentBanner.title}</h2>
+        <h1>{contentBanner.title}</h1>
         <p className={styles.text}>{contentBanner.subtitle}</p>
         <a href={contentBanner.buttonLink}>
           <button>{contentBanner.buttonText} &nbsp;&nbsp;➜</button>

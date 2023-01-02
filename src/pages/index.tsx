@@ -61,8 +61,6 @@ export const getStaticProps: GetStaticProps = async () => {
     imagem_do_banner,
   } = banner.results[0].data;
 
-  console.log(banner.results[0].data);
-
   const contentBanner = {
     title: RichText.asText(titulo_do_banner),
     subtitle: RichText.asText(subtitulo),
