@@ -1,4 +1,8 @@
 import React from 'react';
+import { GetStaticProps } from 'next';
+import { getPrismicClient } from '../../service/prismic';
+import Prismic from '@prismicio/client';
+import { RichText } from 'prismic-dom';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -96,3 +100,29 @@ export default function Blog() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+  const response = await prismic.query(
+    [Prismic.Predicates.at('document.type', 'post')],
+    {
+      orderings: '[document.last_publication_date desc]',
+      fetch: ['titulo_do_post', 'conteudo_do_post', 'imagem_do_post'],
+      pageSize: 3,
+    },
+  );
+
+  response.results.map((post) => {
+    return {
+      slug: post.uid,
+      title: RichText.asText(post.data.titulo_do_post),
+      description: post.data.conteudo_do_post.find(
+        (content) => content.type === 'paragraph'?.text ?? '',
+      ),
+      cover: 
+    };
+  });
+  return {
+    props: {},
+  };
+};
