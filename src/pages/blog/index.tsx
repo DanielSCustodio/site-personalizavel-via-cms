@@ -12,12 +12,23 @@ import {
   FiChevronRight,
   FiChevronsRight,
 } from 'react-icons/fi';
-import banner from '../../../public/images/blog.jpg';
-
 import styles from './styles.module.sass';
-import { icons } from 'react-icons';
 
-export default function Blog() {
+type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  cover: string;
+  updatedAt: string;
+};
+interface PostsProps {
+  allPosts: Post[];
+}
+
+export default function Blog({ allPosts }: PostsProps) {
+  const [posts, setPosts] = React.useState(allPosts || []);
+  console.log(posts);
+
   return (
     <>
       <Head>
@@ -26,57 +37,24 @@ export default function Blog() {
       <main className={styles.container}>
         <h1>O melhor conteúdo sobre tecnologia</h1>
         <section className={styles.containerPosts}>
-          <section className={styles.content}>
-            <Link href="/">
-              <Image
-                src={banner}
-                alt="Título do post"
-                width={500}
-                height={300}
-                quality={100}
-              />
-              <strong>Criando meu aplicativo</strong>
-              <time>28 Novembro 2022</time>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem
-                ipsum dolor sit, amet consectetur adipisicing elit.
-              </p>
-            </Link>
-          </section>
-          <section className={styles.content}>
-            <Link href="/">
-              <Image
-                src={banner}
-                alt="Título do post"
-                width={500}
-                height={300}
-                quality={100}
-              />
-              <strong>Criando meu aplicativo</strong>
-              <time>28 Novembro 2022</time>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem
-                ipsum dolor sit, amet consectetur adipisicing elit.
-              </p>
-            </Link>
-          </section>
-          <section className={styles.content}>
-            <Link href="/">
-              <Image
-                src={banner}
-                alt="Título do post"
-                width={500}
-                height={300}
-                quality={100}
-              />
-              <strong>Criando meu aplicativo</strong>
-              <time>28 Novembro 2022</time>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem
-                ipsum dolor sit, amet consectetur adipisicing elit.
-              </p>
-            </Link>
-          </section>
+          {posts.map((post) => (
+            <section className={styles.content} key={post.slug}>
+              <Link href={`/posts/${post.slug}`}>
+                <Image
+                  src={post.cover}
+                  alt={post.title}
+                  width={200}
+                  height={200}
+                  quality={100}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPsndJbDwAFkwIvDmlTiAAAAABJRU5ErkJggg=="
+                />
+                <strong>{post.title}</strong>
+                <time>{post.updatedAt}</time>
+                <p>{post.description.slice(0, 140)}...</p>
+              </Link>
+            </section>
+          ))}
         </section>
         <section className={styles.buttonsNavigation}>
           <div>
@@ -112,17 +90,28 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   );
 
-  response.results.map((post) => {
+  const allPosts = response.results.map((post) => {
     return {
       slug: post.uid,
       title: RichText.asText(post.data.titulo_do_post),
-      description: post.data.conteudo_do_post.find(
-        (content) => content.type === 'paragraph'?.text ?? '',
+      description:
+        post.data.conteudo_do_post.find(
+          (content) => content.type === 'paragraph',
+        )?.text ?? '',
+      cover: post.data.imagem_do_post.url,
+      updatedAt: new Date(post.last_publication_date).toLocaleDateString(
+        'pt-BR',
+        {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        },
       ),
-      cover: 
     };
   });
+
   return {
-    props: {},
+    props: { allPosts },
+    revalidate: 60 * 30, // Atualiza cada 30 minutos
   };
 };
