@@ -12,7 +12,7 @@ import {
   FiChevronRight,
   FiChevronsRight,
 } from 'react-icons/fi';
-import styles from './styles.module.sass';
+import styles from './blog.module.sass';
 
 type Post = {
   slug: string;
@@ -84,7 +84,7 @@ export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
         <section className={styles.containerPosts}>
           {posts.map((post) => (
             <section className={styles.content} key={post.slug}>
-              <Link href={`/posts/${post.slug}`}>
+              <Link href={`/blog/${post.slug}`}>
                 <Image
                   src={post.cover}
                   alt={post.title}
