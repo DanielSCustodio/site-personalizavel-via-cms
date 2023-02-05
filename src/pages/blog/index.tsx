@@ -22,12 +22,57 @@ type Post = {
   updatedAt: string;
 };
 interface PostsProps {
-  allPosts: Post[];
+  postsAPI: Post[];
+  page: string;
+  totalPage: string;
 }
 
-export default function Blog({ allPosts }: PostsProps) {
-  const [posts, setPosts] = React.useState(allPosts || []);
-  console.log(posts);
+export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
+  const [currentPage, setCurrentPage] = React.useState(Number(page));
+  const [posts, setPosts] = React.useState(postsAPI || []);
+
+  async function reqPost(pageNumber: number) {
+    const prismic = getPrismicClient();
+    const response = await prismic.query(
+      [Prismic.Predicates.at('document.type', 'post')],
+      {
+        orderings: '[document.last_publication_date desc]',
+        fetch: ['titulo_do_post', 'conteudo_do_post', 'imagem_do_post'],
+        pageSize: 3,
+        page: String(pageNumber),
+      },
+    );
+    return response;
+  }
+
+  async function navigatePage(pageNumber: number) {
+    const response = await reqPost(pageNumber);
+    if (response.results.length === 0) {
+      return;
+    }
+
+    const getPosts = response.results.map((post) => {
+      return {
+        slug: post.uid,
+        title: RichText.asText(post.data.titulo_do_post),
+        description:
+          post.data.conteudo_do_post.find(
+            (content) => content.type === 'paragraph',
+          )?.text ?? '',
+        cover: post.data.imagem_do_post.url,
+        updatedAt: new Date(post.last_publication_date).toLocaleDateString(
+          'pt-BR',
+          {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          },
+        ),
+      };
+    });
+    setCurrentPage(pageNumber);
+    setPosts(getPosts);
+  }
 
   return (
     <>
@@ -51,28 +96,32 @@ export default function Blog({ allPosts }: PostsProps) {
                 />
                 <strong>{post.title}</strong>
                 <time>{post.updatedAt}</time>
-                <p>{post.description.slice(0, 140)}...</p>
+                <p>{post.description.slice(0, 100)}...</p>
               </Link>
             </section>
           ))}
         </section>
         <section className={styles.buttonsNavigation}>
-          <div>
-            <button>
-              <FiChevronsLeft size={25} />
-            </button>
-            <button>
-              <FiChevronLeft size={25} />
-            </button>
-          </div>
-          <div>
-            <button>
-              <FiChevronRight size={25} />
-            </button>
-            <button>
-              <FiChevronsRight size={25} />
-            </button>
-          </div>
+          {Number(currentPage) >= 2 && (
+            <div>
+              <button onClick={() => navigatePage(1)}>
+                <FiChevronsLeft size={25} />
+              </button>
+              <button onClick={() => navigatePage(Number(currentPage - 1))}>
+                <FiChevronLeft size={25} />
+              </button>
+            </div>
+          )}
+          {Number(currentPage) < Number(totalPage) && (
+            <div>
+              <button onClick={() => navigatePage(Number(currentPage + 1))}>
+                <FiChevronRight size={25} />
+              </button>
+              <button onClick={() => navigatePage(Number(totalPage))}>
+                <FiChevronsRight size={25} />
+              </button>
+            </div>
+          )}
         </section>
       </main>
     </>
@@ -90,7 +139,7 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   );
 
-  const allPosts = response.results.map((post) => {
+  const postsAPI = response.results.map((post) => {
     return {
       slug: post.uid,
       title: RichText.asText(post.data.titulo_do_post),
@@ -111,7 +160,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   return {
-    props: { allPosts },
+    props: { postsAPI, page: response.page, totalPage: response.total_pages },
     revalidate: 60 * 30, // Atualiza cada 30 minutos
   };
 };
