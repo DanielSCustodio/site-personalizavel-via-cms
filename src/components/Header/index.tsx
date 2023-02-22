@@ -16,7 +16,6 @@ export default function Header() {
           <ActiveLink href="/" activeClassName={styles.active}>
             <a>Home</a>
           </ActiveLink>
-
           <ActiveLink href="/blog" activeClassName={styles.active}>
             <a>Blog</a>
           </ActiveLink>
