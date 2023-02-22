@@ -20,13 +20,9 @@ export default function Header() {
           <ActiveLink href="/blog" activeClassName={styles.active}>
             <a>Blog</a>
           </ActiveLink>
-
-          <ActiveLink href="/sobre" activeClassName={styles.active}>
-            <a>Sobre nós</a>
-          </ActiveLink>
         </nav>
         <a href="#" type="button" className={styles.readyButton}>
-          Começar
+          Quero meu site
         </a>
       </div>
     </header>
