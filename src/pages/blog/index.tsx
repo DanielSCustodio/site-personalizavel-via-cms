@@ -38,7 +38,7 @@ export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
       {
         orderings: '[document.last_publication_date desc]',
         fetch: ['titulo_do_post', 'conteudo_do_post', 'imagem_do_post'],
-        pageSize: 3,
+        pageSize: 6,
         page: String(pageNumber),
       },
     );
@@ -81,6 +81,11 @@ export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
       </Head>
       <main className={styles.container}>
         <h1>O melhor conteúdo sobre tecnologia</h1>
+        <h3>
+          Material selecionado com os assuntos mais relevantes para alavancar o
+          seu conhecimento. O Blog Dev tem o prazer em te ajudar a ser um
+          programdor melhor, absorva nosso conteúdo sem moderação.
+        </h3>
         <section className={styles.containerPosts}>
           {posts.map((post) => (
             <section className={styles.content} key={post.slug}>
@@ -135,7 +140,7 @@ export const getStaticProps: GetStaticProps = async () => {
     {
       orderings: '[document.last_publication_date desc]',
       fetch: ['titulo_do_post', 'conteudo_do_post', 'imagem_do_post'],
-      pageSize: 3,
+      pageSize: 6,
     },
   );
 
