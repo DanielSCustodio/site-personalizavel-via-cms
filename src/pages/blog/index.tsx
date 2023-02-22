@@ -83,8 +83,7 @@ export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
         <h1>O melhor conteúdo sobre tecnologia</h1>
         <h3>
           Material selecionado com os assuntos mais relevantes para alavancar o
-          seu conhecimento. O Blog Dev tem o prazer em te ajudar a ser um
-          programdor melhor, absorva nosso conteúdo sem moderação.
+          seu conhecimento.
         </h3>
         <section className={styles.containerPosts}>
           {posts.map((post) => (
@@ -97,7 +96,7 @@ export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
                   height={200}
                   quality={100}
                   placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPsndJbDwAFkwIvDmlTiAAAAABJRU5ErkJggg=="
+                  blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                 />
                 <strong>{post.title}</strong>
                 <time>{post.updatedAt}</time>
