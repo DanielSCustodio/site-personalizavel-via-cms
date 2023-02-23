@@ -85,26 +85,33 @@ export default function Blog({ postsAPI, page, totalPage }: PostsProps) {
           Material selecionado com os assuntos mais relevantes para alavancar o
           seu conhecimento.
         </h3>
-        <section className={styles.containerPosts}>
-          {posts.map((post) => (
-            <section className={styles.content} key={post.slug}>
-              <Link href={`/blog/${post.slug}`}>
-                <Image
-                  src={post.cover}
-                  alt={post.title}
-                  width={200}
-                  height={200}
-                  quality={100}
-                  placeholder="blur"
-                  blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                />
-                <strong>{post.title}</strong>
-                <time>{post.updatedAt}</time>
-                <p>{post.description.slice(0, 100)}...</p>
-              </Link>
-            </section>
-          ))}
-        </section>
+        <div className={styles.fullContent}>
+          <section className={styles.containerPosts}>
+            {posts.map((post) => (
+              <section className={styles.content} key={post.slug}>
+                <Link href={`/blog/${post.slug}`}>
+                  <div>
+                    <strong>{post.title}</strong>
+                    <time>Postado em {post.updatedAt}</time>
+                  </div>
+                  <Image
+                    src={post.cover}
+                    alt={post.title}
+                    width={870}
+                    height={480}
+                    quality={100}
+                    placeholder="blur"
+                    blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                  />
+                  <p>{post.description.slice(0, 162)}...</p>
+                </Link>
+              </section>
+            ))}
+          </section>
+          <aside className={styles.aside}>
+            <h1>algo aqui</h1>
+          </aside>
+        </div>
         <section className={styles.buttonsNavigation}>
           {Number(currentPage) >= 2 && (
             <div>
